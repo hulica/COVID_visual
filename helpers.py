@@ -1,11 +1,9 @@
 import matplotlib.pyplot as plt
-from countryinfo import CountryInfo
-from pandas.core.frame import DataFrame
-import wget
+
+
 from flask import redirect, session
 from functools import wraps
-import os
-import csv
+
 import pandas as pd
 import numpy as np
 import seaborn as sns

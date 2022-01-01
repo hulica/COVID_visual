@@ -55,7 +55,6 @@ Python, Flask, Heroku
 
 ## 🚀 About Me
 
-I'm in finance in the phase of changing my career and learning how to code.
 
 ## How to develop further this project?
 
