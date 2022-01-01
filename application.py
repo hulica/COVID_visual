@@ -1,9 +1,7 @@
 
-# import csv
+
 from flask import Flask, redirect, render_template, request
-# from datetime import datetime
-# import pandas as pd
-# import seaborn as sns
+
 
 from helpers import draw_graphs, get_all_country_list
 
@@ -14,7 +12,7 @@ app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
 @ app.route("/", methods=["GET", "POST"])
