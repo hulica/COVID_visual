@@ -14,7 +14,7 @@ Get COVID data
                 <p class="p-head">Choose the countries you want to know about:</p>
 
                 <!-- form for players -->
-                <form action="/covid" method="post">
+                <form action="/" method="post">
                     <select class="m-2" name="country1">
                         <option disabled selected value="">Countries</option>
                         {% for country in countries %}
@@ -22,7 +22,7 @@ Get COVID data
                         <option value="{{ country }}">{{ country }} </option>
                         {% endfor %}
                     </select>
-                    <select class="m-2" name="country3">
+                    <select class="m-2" name="country2">
                         <option disabled selected value="">Countries</option>
                         {% for country in countries %}
                         <!--- ide jön a userhez lekérdezett user portfolio -->
@@ -70,15 +70,18 @@ Get COVID data
         <div class="row align-items-center py-3">
             
             <div class="col-12 pt-3">
-                <h2 class="text-center muted pt-3">New infections<br><small class="text-muted"> 7 days average / 1 million people</small>
+                <h2 class="text-center muted pt-3">New infections, {{ graph_infection }}<br><small class="text-muted"> 7 days average / 1 million people</small>
                     </h2>
-                    <img src={{ graph_infect }} alt="infection graph" class="img-fluid mx-auto d-block">
+                    <img src="../static/img/graphs/infection.png" alt="infection graph" class="img-fluid mx-auto d-block">
+                    <!-- <img src="../static/img/graphs/1*LixatBxkewppAhv1Mm5H2w.jpeg" alt="infection graph" class="img-fluid mx-auto d-block"> -->
             </div>
 
             <div class="col-12 pt-3">
-                <h2 class="text-center muted pt-3"> Daily fatalities<br><small class="text-muted">7 days average / 1 million
+                <h2 class="text-center muted pt-3"> Daily  {{ graph_infection }}<br><small class="text-muted">7 days average / 1 million
                             people</small></h2>    
-                <img src={{ graph_death }} alt="death graph" class="img-fluid mx-auto d-block">
+                <img src= "../static/img/graphs/fatalities.png" alt="fatalities graph" class="img-fluid mx-auto d-block">
+                <!-- <img src={{ graph_fatalities }} alt="fatalities graph" class="img-fluid mx-auto d-block">
+             -->
             </div>
 
             

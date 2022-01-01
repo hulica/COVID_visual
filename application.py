@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 import seaborn as sns
 
-from helpers import draw_covid_graph
+from helpers import draw_graphs, get_all_country_list
 
 
 
@@ -16,23 +16,14 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
-#@ app.route("/", methods=["GET"])
 
 @ app.route("/", methods=["GET", "POST"])
 def covid():
-    """Get countries for checking covid data"""
+  
+    """Ask for countries and get COVID data displaying plots on infections and fatalities"""
+    countries = get_all_country_list()
 
-    # get list of all the reported countries from a csv. This will be used by the form as the potential countries, from where the user can choose
-    country_file = "countries.csv"
-    countries = []
-    with open(country_file) as f:
-        reader = csv.reader(f)
-        for line in reader:  # the countries are a list in one line
-            for country in line:
-                countries.append(country)
-
-    # this is reported to Johns Hopkins but no population data exists so cannot be displayed in per capita graphs
-
+    
     if request.method == "GET":  # display form
         message = ""
         return render_template("covid.html", message=message, countries=countries)
@@ -43,19 +34,16 @@ def covid():
         # collect countries from the form
         country1 = request.form.get("country1")
         country2 = request.form.get("country2")
-        country3 = request.form.get("country3")
+        
 
-        if not not country1:  # ez tudom h nagyon csúnya, egyesével appendálom, ha submittáltak ilyet
+        if not not country1:  # checking whether a valid country has been selected
             country_list.append(country1)
 
         if not not country2:
             country_list.append(country2)
 
-        if not not country3:
-            country_list.append(country3)
-
         for country in country_list:
-            # if not a valid country, they should be dropped. after this step, the country_ist countains the valid country choices of the user
+            # if not a valid country, they should be dropped. after this step, the country_list countains the valid country choices of the user
             if country == '' or country not in countries:
                 country_list.remove(country)
 
@@ -71,6 +59,9 @@ def covid():
                 countrystring += " " + country_list[i] + ","
 
         message = "COVID status for " + countrystring
-        graph_infect, graph_death = draw_covid_graph(country_list)
-
-        return render_template("covid_results.html", message=message, countries=countries, graph_infect=graph_infect, graph_death=graph_death)
+        
+        graph_infection, graph_fatalities = draw_graphs(country_list)
+        
+        return render_template("covid_results.html", message=message, countries=countries)
+        # ezt vettem ki
+        # return render_template("covid_results.html", message=message, countries=countries, graph_infection=graph_infection, graph_fatalities=graph_fatalities)
