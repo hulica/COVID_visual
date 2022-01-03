@@ -42,7 +42,7 @@ Get COVID data
         <div class="row align-items-center">
             <p class="fw-light font-italic">
                 Data provided for free by <a href=https://coronavirus.jhu.edu/about/how-to-use-our-data>Johns Hopkins University
-                    & Medicine Coronavirus Research Center.</a>
+                    & Medicine Coronavirus Research Center.</a> and <a href="https://github.com/owid/covid-19-data/blob/master/scripts/input/un/population_latest.csv">Our World in Data</a>
             </p>
         </div>
     </div>
@@ -70,18 +70,18 @@ Get COVID data
         <div class="row align-items-center py-3">
             
             <div class="col-12 pt-3">
-                <h2 class="text-center muted pt-3">New infections, {{ graph_infection }}<br><small class="text-muted"> 7 days average / 1 million people</small>
+                <h2 class="text-center muted pt-3">New infections<br><small class="text-muted"> 7 days average / 1 million people</small>
                     </h2>
-                    <img src="../static/img/graphs/infection.png" alt="infection graph" class="img-fluid mx-auto d-block">
+                    <img src= {{ graph_infection }} alt="infection graph" class="img-fluid mx-auto d-block">
                     <!-- <img src="../static/img/graphs/1*LixatBxkewppAhv1Mm5H2w.jpeg" alt="infection graph" class="img-fluid mx-auto d-block"> -->
             </div>
 
             <div class="col-12 pt-3">
-                <h2 class="text-center muted pt-3"> Daily  {{ graph_infection }}<br><small class="text-muted">7 days average / 1 million
+                <h2 class="text-center muted pt-3">Daily fatalities<br><small class="text-muted">7 days average / 1 million
                             people</small></h2>    
-                <img src= "../static/img/graphs/fatalities.png" alt="fatalities graph" class="img-fluid mx-auto d-block">
-                <!-- <img src={{ graph_fatalities }} alt="fatalities graph" class="img-fluid mx-auto d-block">
-             -->
+                <!-- <img src= "../static/img/graphs/fatalities.png" alt="fatalities graph" class="img-fluid mx-auto d-block"> -->
+                <img src={{ graph_fatalities }} alt="fatalities graph" class="img-fluid mx-auto d-block">
+             
             </div>
 
             

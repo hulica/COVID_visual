@@ -32,6 +32,14 @@ def get_all_country_list():
     population = pd.read_csv(URL_POPULATION)
     country_list_population = population.entity.unique()
 
+    translating_country_dict = {
+        'US': 'United States',
+        'Korea, South': 'South Korea',
+        'Taiwan*': 'Taiwan'
+    }
+    fatalities = fatalities.replace({'Country/Region':translating_country_dict})
+
+
     all_country_list=[country for country in country_list_population if country in list(fatalities['Country/Region'].unique())]
     return all_country_list
       
@@ -98,7 +106,7 @@ def draw_graphs(country_list):
 
     def plot_graph(filtered_data, label):
         plt.figure().clear()
-        ax = sns.relplot(data=filtered_data, kind='line', x='date', y='pop_relative_moving_avg', hue='Country', height=5, aspect=2)
+        ax = sns.relplot(data=filtered_data, kind='line', x='date', y='pop_relative_moving_avg', hue='Country', palette=["firebrick", "midnightblue"], height=5, aspect=2)
 
         ax.set(xlabel= '', 
             ylabel = 'Cases', 

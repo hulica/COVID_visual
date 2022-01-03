@@ -60,6 +60,6 @@ def covid():
         
         graph_infection, graph_fatalities = draw_graphs(country_list)
         
-        return render_template("covid_results.html", message=message, countries=countries)
+        #return render_template("covid_results.html", message=message, countries=countries)
         # ezt vettem ki
-        # return render_template("covid_results.html", message=message, countries=countries, graph_infection=graph_infection, graph_fatalities=graph_fatalities)
+        return render_template("covid_results.html", message=message, countries=countries, graph_infection=graph_infection, graph_fatalities=graph_fatalities)
